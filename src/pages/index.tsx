@@ -66,10 +66,7 @@ const Index: React.FC = () => {
           faucibus ex, non facilisis nisl.
         </StyledBody>
         <StyledAction>
-          <Button
-            startEnhancer={Plus}
-            overrides={{BaseButton: {style: {width: '100%'}}}}
-          >
+          <Button onClick={() => console.log('Hi')} startEnhancer={Plus}>
             Add to Cart
           </Button>
         </StyledAction>
