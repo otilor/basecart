@@ -12,6 +12,7 @@ import {useStyletron} from 'baseui';
 import {FlexGrid, FlexGridItem} from 'baseui/flex-grid';
 import {BlockProps} from 'baseui/block';
 import {Card, StyledBody, StyledAction} from 'baseui/card';
+import {Plus} from 'baseui/icon';
 
 const Index: React.FC = () => {
   const [css] = useStyletron();
@@ -94,8 +95,11 @@ const Index: React.FC = () => {
           faucibus ex, non facilisis nisl.
         </StyledBody>
         <StyledAction>
-          <Button overrides={{BaseButton: {style: {width: '100%'}}}}>
-            Button Label
+          <Button
+            startEnhancer={Plus}
+            overrides={{BaseButton: {style: {width: '100%'}}}}
+          >
+            Add to Cart
           </Button>
         </StyledAction>
       </Card>
