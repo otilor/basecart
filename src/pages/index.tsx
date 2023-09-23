@@ -16,42 +16,7 @@ import {Plus} from 'baseui/icon';
 
 const Index: React.FC = () => {
   const [css] = useStyletron();
-  const nav = [
-    {
-      title: 'Colors',
-      itemId: '#level1.1',
-      subNav: [
-        {
-          title: 'Primary',
-          itemId: '#level1.1.1',
-        },
-        {
-          title: 'Shades',
-          itemId: '#level1.1.2',
-          subNav: [
-            {
-              title: 'Dark',
-              itemId: '#level1.1.2.1',
-            },
-            {
-              title: 'Light',
-              itemId: '#level1.1.2.2',
-            },
-          ],
-        },
-      ],
-    },
-    {
-      title: 'Sizing',
-      itemId: '#level1.2',
-    },
-    {
-      title: 'Typography',
-      itemId: '#level1.3',
-    },
-  ];
 
-  const [location, setLocation] = React.useState('#level1.1.1');
   const itemProps: BlockProps = {
     display: 'flex',
   };
@@ -65,7 +30,6 @@ const Index: React.FC = () => {
     'https://www.instacart.com/image-server/591x591/filters:fill(FFF,true):format(jpg)/d2lnr5mha7bycj.cloudfront.net/product-image/file/large_8ee9d1a8-988f-4d07-99be-57fb05a68767.jpg',
     'https://www.instacart.com/image-server/394x394/filters:fill(FFF,true):format(jpg)/d2lnr5mha7bycj.cloudfront.net/product-image/file/large_4453585c-c158-438d-bae5-980973efc462.jpg',
     'https://www.instacart.com/image-server/394x394/filters:fill(FFF,true):format(jpg)/d2lnr5mha7bycj.cloudfront.net/product-image/file/large_ec4a5933-3593-468d-a1e8-946c8e9ceff0.jpg',
-    
   ];
 
   const fruits: string[] = [
@@ -77,7 +41,6 @@ const Index: React.FC = () => {
     'https://www.instacart.com/image-server/394x394/filters:fill(FFF,true):format(jpg)/d2lnr5mha7bycj.cloudfront.net/product-image/file/large_cb92de5d-749a-4084-94bc-34d4538a86b1.jpeg',
     'https://www.instacart.com/image-server/394x394/filters:fill(FFF,true):format(jpg)/d2lnr5mha7bycj.cloudfront.net/product-image/file/large_a984a9ca-fcd1-4fcc-8cb0-492da8701809.jpg',
     'https://www.instacart.com/image-server/394x394/filters:fill(FFF,true):format(jpg)/d2lnr5mha7bycj.cloudfront.net/product-image/file/large_bd591eec-d175-45b5-b68b-5750c77e255c.jpeg',
-    
   ];
 
   const bread: string[] = [
@@ -89,7 +52,7 @@ const Index: React.FC = () => {
     'https://www.instacart.com/image-server/394x394/filters:fill(FFF,true):format(jpg)/d2lnr5mha7bycj.cloudfront.net/product-image/file/large_20f97a5b-59d1-450c-a888-ce3469ef4851.jpg',
     'https://www.instacart.com/image-server/394x394/filters:fill(FFF,true):format(jpg)/d2lnr5mha7bycj.cloudfront.net/product-image/file/large_51cb9a58-ca6f-4fd9-bd21-ed34d4cc97f1.jpg',
     'https://www.instacart.com/image-server/394x394/filters:fill(FFF,true):format(jpg)/d2lnr5mha7bycj.cloudfront.net/product-image/file/large_940d304a-6372-4c06-88ad-f006f547c9b9.jpg',
-  ]
+  ];
 
   const imageList = array.map((element, index) => (
     <FlexGridItem key={index} {...itemProps}>
@@ -136,7 +99,6 @@ const Index: React.FC = () => {
       </Card>
     </FlexGridItem>
   ));
-
 
   const breadList = bread.map((element, index) => (
     <FlexGridItem key={index} {...itemProps}>
