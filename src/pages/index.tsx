@@ -13,6 +13,7 @@ import {FlexGrid, FlexGridItem} from 'baseui/flex-grid';
 import {BlockProps} from 'baseui/block';
 import {Card, StyledBody, StyledAction} from 'baseui/card';
 import {Plus} from 'baseui/icon';
+import {Item} from '../data/items';
 
 const Index: React.FC = () => {
   const [css] = useStyletron();
@@ -22,7 +23,6 @@ const Index: React.FC = () => {
   };
 
   const array: string[] = [
-    'https://www.instacart.com/image-server/591x591/filters:fill(FFF,true):format(jpg)/d2lnr5mha7bycj.cloudfront.net/product-image/file/large_75c26b19-f902-4c53-9b78-b9efca722b13.jpg',
     'https://www.instacart.com/image-server/591x591/filters:fill(FFF,true):format(jpg)/d2lnr5mha7bycj.cloudfront.net/product-image/file/large_a21fe8c4-88b3-44b5-ba37-dd49ebed6014.jpg',
     'https://www.instacart.com/image-server/591x591/filters:fill(FFF,true):format(jpg)/d2lnr5mha7bycj.cloudfront.net/product-image/file/large_d7dcd978-645a-4e93-a073-a2dcba9be774.jpg',
     'https://www.instacart.com/image-server/591x591/filters:fill(FFF,true):format(jpg)/d2lnr5mha7bycj.cloudfront.net/product-image/file/large_18850fc6-5466-4c06-9d84-623509ffe430.jpg',
@@ -52,6 +52,25 @@ const Index: React.FC = () => {
     'https://www.instacart.com/image-server/394x394/filters:fill(FFF,true):format(jpg)/d2lnr5mha7bycj.cloudfront.net/product-image/file/large_20f97a5b-59d1-450c-a888-ce3469ef4851.jpg',
     'https://www.instacart.com/image-server/394x394/filters:fill(FFF,true):format(jpg)/d2lnr5mha7bycj.cloudfront.net/product-image/file/large_51cb9a58-ca6f-4fd9-bd21-ed34d4cc97f1.jpg',
     'https://www.instacart.com/image-server/394x394/filters:fill(FFF,true):format(jpg)/d2lnr5mha7bycj.cloudfront.net/product-image/file/large_940d304a-6372-4c06-88ad-f006f547c9b9.jpg',
+  ];
+
+  const quantites: Item[] = [
+    {
+      id: 1,
+      name: 'Lemon',
+      price: 2.33,
+      image:
+        'https://www.instacart.com/image-server/591x591/filters:fill(FFF,true):format(jpg)/d2lnr5mha7bycj.cloudfront.net/product-image/file/large_75c26b19-f902-4c53-9b78-b9efca722b13.jpg',
+      quantity: 0,
+    },
+    {
+      id: 2,
+      name: 'Onions',
+      price: 0.56,
+      image:
+        'https://www.instacart.com/image-server/591x591/filters:fill(FFF,true):format(jpg)/d2lnr5mha7bycj.cloudfront.net/product-image/file/large_a21fe8c4-88b3-44b5-ba37-dd49ebed6014.jpg',
+      quantity: 0,
+    },
   ];
 
   const imageList = array.map((element, index) => (
@@ -120,6 +139,30 @@ const Index: React.FC = () => {
     </FlexGridItem>
   ));
 
+  const quantityList = quantites.map((element, index) => (
+    <FlexGridItem key={index} {...itemProps}>
+      <Card
+        overrides={{Root: {style: {width: '328px'}}}}
+        headerImage={element.image}
+        title={element.name}
+      >
+        <StyledBody>
+          Proin ut dui sed metus pharetra hend rerit vel non mi. Nulla ornare
+          faucibus ex, non facilisis nisl.
+        </StyledBody>
+        <StyledAction>
+          <Button
+            startEnhancer={Plus}
+            onClick={() => console.log(element.name, element.quantity + 1)}
+            overrides={{BaseButton: {style: {width: '100%'}}}}
+          >
+            Add to Cart
+          </Button>
+        </StyledAction>
+      </Card>
+    </FlexGridItem>
+  ));
+
   return (
     <div>
       <HeaderNavigation>
@@ -163,12 +206,20 @@ const Index: React.FC = () => {
 
       <HeadingMedium>Bread</HeadingMedium>
 
-      <FlexGrid
+      {/* <FlexGrid
         flexGridColumnCount={[1, 2, 4, 8]}
         flexGridColumnGap="scale800"
         flexGridRowGap="scale800"
       >
         {breadList}
+      </FlexGrid> */}
+
+      <FlexGrid
+        flexGridColumnCount={[1, 2, 4, 8]}
+        flexGridColumnGap="scale800"
+        flexGridRowGap="scale800"
+      >
+        {quantityList}
       </FlexGrid>
     </div>
   );
