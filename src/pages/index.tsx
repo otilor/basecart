@@ -24,17 +24,6 @@ const Index: React.FC = () => {
     display: 'flex',
   };
 
-  const fruits: string[] = [
-    'https://www.instacart.com/image-server/394x394/filters:fill(FFF,true):format(jpg)/d2lnr5mha7bycj.cloudfront.net/product-image/file/large_d3b77042-47af-4789-b285-d654e820c163.jpg',
-    'https://www.instacart.com/image-server/394x394/filters:fill(FFF,true):format(jpg)/d2lnr5mha7bycj.cloudfront.net/product-image/file/large_95c5428a-64c9-40f4-9c35-c9da9829c342.jpg',
-    'https://www.instacart.com/image-server/394x394/filters:fill(FFF,true):format(jpg)/d2lnr5mha7bycj.cloudfront.net/product-image/file/large_4fe2e522-a62c-49a2-96e9-8d15f0895977.jpg',
-    'https://www.instacart.com/image-server/394x394/filters:fill(FFF,true):format(jpg)/d2lnr5mha7bycj.cloudfront.net/product-image/file/large_d022a6f7-3dbb-4803-8024-8b2a3f6b11c5.jpg',
-    'https://www.instacart.com/image-server/394x394/filters:fill(FFF,true):format(jpg)/d2lnr5mha7bycj.cloudfront.net/product-image/file/large_b9c0631a-3dec-410f-9e5f-332af0c52b0b.jpg',
-    'https://www.instacart.com/image-server/394x394/filters:fill(FFF,true):format(jpg)/d2lnr5mha7bycj.cloudfront.net/product-image/file/large_cb92de5d-749a-4084-94bc-34d4538a86b1.jpeg',
-    'https://www.instacart.com/image-server/394x394/filters:fill(FFF,true):format(jpg)/d2lnr5mha7bycj.cloudfront.net/product-image/file/large_a984a9ca-fcd1-4fcc-8cb0-492da8701809.jpg',
-    'https://www.instacart.com/image-server/394x394/filters:fill(FFF,true):format(jpg)/d2lnr5mha7bycj.cloudfront.net/product-image/file/large_bd591eec-d175-45b5-b68b-5750c77e255c.jpeg',
-  ];
-
   const bread: string[] = [
     'https://www.instacart.com/image-server/394x394/filters:fill(FFF,true):format(jpg)/d2lnr5mha7bycj.cloudfront.net/product-image/file/large_fa7d76ce-4c02-4a32-b073-fe66ec9df196.jpg',
     'https://www.instacart.com/image-server/394x394/filters:fill(FFF,true):format(jpg)/d2lnr5mha7bycj.cloudfront.net/product-image/file/large_374ec86e-a9a1-46f4-92cb-cac98d542544.jpeg',
@@ -49,28 +38,7 @@ const Index: React.FC = () => {
   const [cart, setCart] = React.useState<Item[]>([]);
   const [quantites, setItems] = React.useState<Item[]>([]);
 
-  const fruitList = fruits.map((element, index) => (
-    <FlexGridItem key={index} {...itemProps}>
-      <Card
-        overrides={{Root: {style: {width: '328px'}}}}
-        headerImage={element}
-        title="Example card"
-      >
-        <StyledBody>
-          Proin ut dui sed metus pharetra hend rerit vel non mi. Nulla ornare
-          faucibus ex, non facilisis nisl.
-        </StyledBody>
-        <StyledAction>
-          <Button
-            startEnhancer={Plus}
-            overrides={{BaseButton: {style: {width: '100%'}}}}
-          >
-            Add to Cart
-          </Button>
-        </StyledAction>
-      </Card>
-    </FlexGridItem>
-  ));
+  
 
   const breadList = bread.map((element, index) => (
     <FlexGridItem key={index} {...itemProps}>
