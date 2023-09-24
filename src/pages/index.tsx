@@ -24,16 +24,6 @@ const Index: React.FC = () => {
     display: 'flex',
   };
 
-  const array: string[] = [
-    'https://www.instacart.com/image-server/591x591/filters:fill(FFF,true):format(jpg)/d2lnr5mha7bycj.cloudfront.net/product-image/file/large_a21fe8c4-88b3-44b5-ba37-dd49ebed6014.jpg',
-    'https://www.instacart.com/image-server/591x591/filters:fill(FFF,true):format(jpg)/d2lnr5mha7bycj.cloudfront.net/product-image/file/large_d7dcd978-645a-4e93-a073-a2dcba9be774.jpg',
-    'https://www.instacart.com/image-server/591x591/filters:fill(FFF,true):format(jpg)/d2lnr5mha7bycj.cloudfront.net/product-image/file/large_18850fc6-5466-4c06-9d84-623509ffe430.jpg',
-    'https://www.instacart.com/image-server/591x591/filters:fill(FFF,true):format(jpg)/d2lnr5mha7bycj.cloudfront.net/product-image/file/large_06c8d88f-3fea-4139-96ba-db2b41ac51d1.jpg',
-    'https://www.instacart.com/image-server/591x591/filters:fill(FFF,true):format(jpg)/d2lnr5mha7bycj.cloudfront.net/product-image/file/large_8ee9d1a8-988f-4d07-99be-57fb05a68767.jpg',
-    'https://www.instacart.com/image-server/394x394/filters:fill(FFF,true):format(jpg)/d2lnr5mha7bycj.cloudfront.net/product-image/file/large_4453585c-c158-438d-bae5-980973efc462.jpg',
-    'https://www.instacart.com/image-server/394x394/filters:fill(FFF,true):format(jpg)/d2lnr5mha7bycj.cloudfront.net/product-image/file/large_ec4a5933-3593-468d-a1e8-946c8e9ceff0.jpg',
-  ];
-
   const fruits: string[] = [
     'https://www.instacart.com/image-server/394x394/filters:fill(FFF,true):format(jpg)/d2lnr5mha7bycj.cloudfront.net/product-image/file/large_d3b77042-47af-4789-b285-d654e820c163.jpg',
     'https://www.instacart.com/image-server/394x394/filters:fill(FFF,true):format(jpg)/d2lnr5mha7bycj.cloudfront.net/product-image/file/large_95c5428a-64c9-40f4-9c35-c9da9829c342.jpg',
@@ -58,26 +48,6 @@ const Index: React.FC = () => {
 
   const [cart, setCart] = React.useState<Item[]>([]);
   const [quantites, setItems] = React.useState<Item[]>([]);
-
-  const imageList = array.map((element, index) => (
-    <FlexGridItem key={index} {...itemProps}>
-      <Card
-        overrides={{Root: {style: {width: '328px'}}}}
-        headerImage={element}
-        title="Example card"
-      >
-        <StyledBody>
-          Proin ut dui sed metus pharetra hend rerit vel non mi. Nulla ornare
-          faucibus ex, non facilisis nisl.
-        </StyledBody>
-        <StyledAction>
-          <Button onClick={() => console.log('Hi')} startEnhancer={Plus}>
-            Add to Cart
-          </Button>
-        </StyledAction>
-      </Card>
-    </FlexGridItem>
-  ));
 
   const fruitList = fruits.map((element, index) => (
     <FlexGridItem key={index} {...itemProps}>
@@ -186,11 +156,7 @@ const Index: React.FC = () => {
 
       {/* Side bar */}
 
-      
-
       <HeadingMedium>Bread</HeadingMedium>
-
-    
 
       <ItemDisplay items={items} addToCart={addToCart} />
 
