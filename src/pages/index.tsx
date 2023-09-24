@@ -186,45 +186,14 @@ const Index: React.FC = () => {
 
       {/* Side bar */}
 
-      {/* <HeadingMedium>Fresh Vegetables</HeadingMedium>
-
-      <FlexGrid
-        flexGridColumnCount={[1, 2, 4, 8]}
-        flexGridColumnGap="scale800"
-        flexGridRowGap="scale800"
-      >
-        {imageList}
-      </FlexGrid>
-
-      <HeadingMedium>Fresh Fruits</HeadingMedium>
-
-      <FlexGrid
-        flexGridColumnCount={[1, 2, 4, 8]}
-        flexGridColumnGap="scale800"
-        flexGridRowGap="scale800"
-      >
-        {fruitList}
-      </FlexGrid> */}
+      
 
       <HeadingMedium>Bread</HeadingMedium>
 
-      {/* <FlexGrid
-        flexGridColumnCount={[1, 2, 4, 8]}
-        flexGridColumnGap="scale800"
-        flexGridRowGap="scale800"
-      >
-        {breadList}
-      </FlexGrid> */}
-
-      <FlexGrid
-        flexGridColumnCount={[1, 2, 4, 8]}
-        flexGridColumnGap="scale800"
-        flexGridRowGap="scale800"
-      >
-        {quantityList}
-      </FlexGrid>
+    
 
       <ItemDisplay items={items} addToCart={addToCart} />
+
       <Cart cart={cart} />
     </div>
   );
