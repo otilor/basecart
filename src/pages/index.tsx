@@ -13,7 +13,9 @@ import {FlexGrid, FlexGridItem} from 'baseui/flex-grid';
 import {BlockProps} from 'baseui/block';
 import {Card, StyledBody, StyledAction} from 'baseui/card';
 import {Plus} from 'baseui/icon';
-import {Item} from '../data/items';
+import items, {Item} from '../data/items';
+import ItemDisplay from '../components/ItemDisplay';
+import Cart from '../components/Cart';
 
 const Index: React.FC = () => {
   const [css] = useStyletron();
@@ -54,24 +56,8 @@ const Index: React.FC = () => {
     'https://www.instacart.com/image-server/394x394/filters:fill(FFF,true):format(jpg)/d2lnr5mha7bycj.cloudfront.net/product-image/file/large_940d304a-6372-4c06-88ad-f006f547c9b9.jpg',
   ];
 
-  const quantites: Item[] = [
-    {
-      id: 1,
-      name: 'Lemon',
-      price: 2.33,
-      image:
-        'https://www.instacart.com/image-server/591x591/filters:fill(FFF,true):format(jpg)/d2lnr5mha7bycj.cloudfront.net/product-image/file/large_75c26b19-f902-4c53-9b78-b9efca722b13.jpg',
-      quantity: 0,
-    },
-    {
-      id: 2,
-      name: 'Onions',
-      price: 0.56,
-      image:
-        'https://www.instacart.com/image-server/591x591/filters:fill(FFF,true):format(jpg)/d2lnr5mha7bycj.cloudfront.net/product-image/file/large_a21fe8c4-88b3-44b5-ba37-dd49ebed6014.jpg',
-      quantity: 0,
-    },
-  ];
+  const [cart, setCart] = React.useState<Item[]>([]);
+  const [quantites, setItems] = React.useState<Item[]>([]);
 
   const imageList = array.map((element, index) => (
     <FlexGridItem key={index} {...itemProps}>
@@ -163,6 +149,22 @@ const Index: React.FC = () => {
     </FlexGridItem>
   ));
 
+  const addToCart = (item: Item) => {
+    const updatedCart = [...cart];
+    const existingItem = updatedCart.find(
+      (cartItem) => cartItem.id === item.id,
+    );
+
+    if (existingItem) {
+      existingItem.quantity += 1;
+    } else {
+      item.quantity = 1;
+      updatedCart.push(item);
+    }
+
+    setCart(updatedCart);
+  };
+
   return (
     <div>
       <HeaderNavigation>
@@ -184,7 +186,7 @@ const Index: React.FC = () => {
 
       {/* Side bar */}
 
-      <HeadingMedium>Fresh Vegetables</HeadingMedium>
+      {/* <HeadingMedium>Fresh Vegetables</HeadingMedium>
 
       <FlexGrid
         flexGridColumnCount={[1, 2, 4, 8]}
@@ -202,7 +204,7 @@ const Index: React.FC = () => {
         flexGridRowGap="scale800"
       >
         {fruitList}
-      </FlexGrid>
+      </FlexGrid> */}
 
       <HeadingMedium>Bread</HeadingMedium>
 
@@ -221,6 +223,9 @@ const Index: React.FC = () => {
       >
         {quantityList}
       </FlexGrid>
+
+      <ItemDisplay items={items} addToCart={addToCart} />
+      <Cart cart={cart} />
     </div>
   );
 };
