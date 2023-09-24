@@ -9,10 +9,7 @@ import {Button, KIND} from 'baseui/button';
 
 import {HeadingMedium} from 'baseui/typography';
 import {useStyletron} from 'baseui';
-import {FlexGrid, FlexGridItem} from 'baseui/flex-grid';
 import {BlockProps} from 'baseui/block';
-import {Card, StyledBody, StyledAction} from 'baseui/card';
-import {Plus} from 'baseui/icon';
 import items, {Item} from '../data/items';
 import ItemDisplay from '../components/ItemDisplay';
 import Cart from '../components/Cart';
