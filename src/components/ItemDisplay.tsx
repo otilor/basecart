@@ -25,6 +25,7 @@ const GET_ITEMS = gql`
       name
       description
       image
+      price
     }
   }
 `;
