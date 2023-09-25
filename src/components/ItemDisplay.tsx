@@ -6,6 +6,8 @@ import {Card, StyledBody, StyledAction} from 'baseui/card';
 import {Plus} from 'baseui/icon';
 import {BlockProps} from 'baseui/block';
 import {Stepper} from 'baseui/stepper';
+import {useQuery, gql} from '@apollo/client';
+import client from '../apolloClient';
 
 interface Props {
   items: Item[];
@@ -16,7 +18,23 @@ const itemProps: BlockProps = {
   display: 'flex',
 };
 
+const GET_ITEMS = gql`
+  query {
+    items {
+      id
+      name
+      description
+      image
+    }
+  }
+`;
+
 function ItemDisplay({items, addToCart}: Props) {
+  const {loading, error, data} = useQuery(GET_ITEMS, {client});
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>;
+
   return (
     <>
       <FlexGrid
@@ -24,7 +42,7 @@ function ItemDisplay({items, addToCart}: Props) {
         flexGridColumnGap="scale800"
         flexGridRowGap="scale800"
       >
-        {items.map((item, index) => (
+        {data.items.map((item, index) => (
           <FlexGridItem key={index} {...itemProps}>
             <Card
               overrides={{Root: {style: {width: '328px'}}}}
