@@ -23,18 +23,14 @@ const Index: React.FC = () => {
 
   const [cart, setCart] = React.useState<Item[]>([]);
 
-  const addToCart = (item: Item) => {
+  const addToCart = (item: Item, value: number) => {
     const updatedCart = [...cart];
     const existingItem = updatedCart.find(
       (cartItem) => cartItem.id === item.id,
     );
 
-    if (existingItem) {
-      existingItem.quantity += 1;
-    } else {
-      item.quantity = 1;
-      updatedCart.push(item);
-    }
+    item.quantity = value;
+    updatedCart.push(item);
 
     setCart(updatedCart);
   };
