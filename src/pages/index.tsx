@@ -29,8 +29,12 @@ const Index: React.FC = () => {
       (cartItem) => cartItem.id === item.id,
     );
 
-    item.quantity = value;
-    updatedCart.push(item);
+    if (existingItem) {
+      existingItem.quantity = value;
+    } else {
+      item.quantity = value;
+      updatedCart.push(item);
+    }
 
     setCart(updatedCart);
   };
