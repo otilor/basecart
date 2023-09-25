@@ -60,7 +60,7 @@ const Index: React.FC = () => {
 
       {/* Side bar */}
 
-      <HeadingMedium>Bread</HeadingMedium>
+      <HeadingMedium>Groceries</HeadingMedium>
 
       <ItemDisplay items={items} addToCart={addToCart} />
 
