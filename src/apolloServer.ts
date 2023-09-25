@@ -9,6 +9,7 @@ const typeDefs = gql`
     name: String!
     description: String!
     image: String!
+    price: Float
   }
 
   type Query {
@@ -17,8 +18,8 @@ const typeDefs = gql`
 `;
 
 const items = [
-  { id: "1", name: "Item 1", description: "Description 1" , image: 'https://www.instacart.com/image-server/591x591/filters:fill(FFF,true):format(jpg)/d2lnr5mha7bycj.cloudfront.net/product-image/file/large_75c26b19-f902-4c53-9b78-b9efca722b13.jpg',},
-  { id: "2", name: "Item 2", description: "Description 2", image: 'https://www.instacart.com/image-server/591x591/filters:fill(FFF,true):format(jpg)/d2lnr5mha7bycj.cloudfront.net/product-image/file/large_a21fe8c4-88b3-44b5-ba37-dd49ebed6014.jpg'},
+  { id: "1", name: "Item 1", description: "Description 1" , image: 'https://www.instacart.com/image-server/591x591/filters:fill(FFF,true):format(jpg)/d2lnr5mha7bycj.cloudfront.net/product-image/file/large_75c26b19-f902-4c53-9b78-b9efca722b13.jpg', price: 2.99},
+  { id: "2", name: "Item 2", description: "Description 2", image: 'https://www.instacart.com/image-server/591x591/filters:fill(FFF,true):format(jpg)/d2lnr5mha7bycj.cloudfront.net/product-image/file/large_a21fe8c4-88b3-44b5-ba37-dd49ebed6014.jpg', price:3.99},
 ];
 
 // Define your resolvers
