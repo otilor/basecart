@@ -13,6 +13,7 @@ import {BlockProps} from 'baseui/block';
 import items, {Item} from '../data/items';
 import ItemDisplay from '../components/ItemDisplay';
 import Cart from '../components/Cart';
+import {useCart} from '../context/CartContext';
 
 const Index: React.FC = () => {
   const [css] = useStyletron();
@@ -21,23 +22,7 @@ const Index: React.FC = () => {
     display: 'flex',
   };
 
-  const [cart, setCart] = React.useState<Item[]>([]);
-
-  const addToCart = (item: Item, value: number) => {
-    const updatedCart = [...cart];
-    const existingItem = updatedCart.find(
-      (cartItem) => cartItem.id === item.id,
-    );
-
-    if (existingItem) {
-      existingItem.quantity = value;
-    } else {
-      item.quantity = value;
-      updatedCart.push(item);
-    }
-
-    setCart(updatedCart);
-  };
+  const {cart, addToCart} = useCart();
 
   return (
     <div>
@@ -62,9 +47,9 @@ const Index: React.FC = () => {
 
       <HeadingMedium>Groceries</HeadingMedium>
 
-      <ItemDisplay items={items} addToCart={addToCart} />
+      <ItemDisplay items={items} />
 
-      <Cart cart={cart} />
+      <Cart />
     </div>
   );
 };
