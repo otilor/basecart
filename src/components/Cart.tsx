@@ -1,17 +1,16 @@
-import { Item } from '../data/items';
+import React from 'react';
+import {useCart} from '../context/CartContext';
 
-interface Props {
-  cart: Item[];
-}
+function Cart() {
+  const {cart} = useCart();
 
-function Cart({cart}: Props) {
   return (
     <div>
       <h2>Cart</h2>
       <ul>
         {cart.map((item) => (
           <li key={item.id}>
-            {item.name} - Quantity: {item.quantity}
+            {item.name} - Price: ${item.price} - Quantity: {item.quantity}
           </li>
         ))}
       </ul>
