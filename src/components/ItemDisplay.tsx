@@ -8,10 +8,10 @@ import {BlockProps} from 'baseui/block';
 import {Stepper} from 'baseui/stepper';
 import {useQuery, gql} from '@apollo/client';
 import client from '../apolloClient';
+import {useCart} from '../context/CartContext';
 
 interface Props {
   items: Item[];
-  addToCart: (item: Item, value: number) => void;
 }
 
 const itemProps: BlockProps = {
@@ -29,8 +29,21 @@ const GET_ITEMS = gql`
   }
 `;
 
-function ItemDisplay({items, addToCart}: Props) {
+function ItemDisplay({items}: Props) {
   const {loading, error, data} = useQuery(GET_ITEMS, {client});
+
+  const {cart, addToCart} = useCart();
+  const updatedCart = [...cart];
+  const isItemInCart = (itemId: string) => {
+    // Check if the item exists in the cart
+    return cart.some((item) => item.id === itemId);
+  };
+
+  const getItemQuantity = (itemId: string) => {
+    // Find the item in the cart
+    const itemInCart = cart.find((item) => item.id === itemId);
+    return itemInCart ? itemInCart.quantity : 0;
+  };
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
@@ -54,11 +67,21 @@ function ItemDisplay({items, addToCart}: Props) {
                 ornare faucibus ex, non facilisis nisl.
               </StyledBody>
               <StyledAction>
-                {item.quantity < 1 && (
+                {!isItemInCart(item.id) && (
                   <div>
                     <Button
                       startEnhancer={Plus}
-                      onClick={() => addToCart(item, 1)}
+                      onClick={() =>
+                        addToCart(
+                          {
+                            id: item.id,
+                            name: item.name,
+                            price: item.price,
+                            quantity: 1,
+                          },
+                          1,
+                        )
+                      }
                       overrides={{BaseButton: {style: {width: '100%'}}}}
                     >
                       Add to Cart
@@ -66,11 +89,21 @@ function ItemDisplay({items, addToCart}: Props) {
                   </div>
                 )}
 
-                {item.quantity >= 1 && (
+                {isItemInCart(item.id) && (
                   <div>
                     <Stepper
-                      value={item.quantity}
-                      setValue={(newValue) => addToCart(item, newValue)}
+                      value={getItemQuantity(item.id)}
+                      setValue={(newValue) =>
+                        addToCart(
+                          {
+                            id: item.id,
+                            name: item.name,
+                            price: item.price,
+                            quantity: newValue,
+                          },
+                          newValue,
+                        )
+                      }
                     />
                   </div>
                 )}
